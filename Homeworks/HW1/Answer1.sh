@@ -1,1 +1,1 @@
-tail -q  * > allmixed
+tail -q  *.txt > allmixed
