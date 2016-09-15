@@ -1,1 +1,1 @@
-tail -q -n5 * > allmixedLast5
+tail -n 5 *.txt > allmixedLast5.txt
