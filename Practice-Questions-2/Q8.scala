@@ -60,14 +60,14 @@ object Q8 {
        }
      }
      //-------------------------------------------------------------------------------------------------------     
-     def cont(lst1:List[Int],lst2:List[Int],count:Int): Boolean ={
+     def cont(lst1:List[Int],lst2:List[Int],orig: List[Int]): Boolean ={
        (lst1,lst2) match {
          case (Nil,_) => false
-         case (Nil,Nil) => true
          case (_,Nil) => true
-         case (hd1::tail1,hd2::tail2) => if (hd1==hd2) {cont(tail1,tail2,count=1)}
-         else if(hd1 != hd2 && count ==1) return false
-         else cont(tail1,lst2,count)
+         case (hd1::tail1, hd2::tail2) => if(hd1==hd2)
+                                            cont(tail1,tail2,orig)
+                                          else
+                                            cont(tail1,orig,orig)
        }
      }
   
@@ -80,7 +80,9 @@ object Q8 {
    //println("Sum: "+ Sum(test))
    //println("Ins: "+ InsTree(test,4))
    //println("Fold: "+ FoldTree(0,test,(x,y)=>x+y))
-   println("Count: "+ cont(ls,List(2,4),0))
+   val test2 = List(1,2,3,4,5,6)
+   val test3 = List(2,3,4)
+   println(cont(test2,test3,test3))
    }
   
 }
